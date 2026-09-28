@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SuperInstance — A substrate walker for the fleet</title>
+  <meta name="description" content="The human-facing window for the SuperInstance account: the family tree, the keeper's wave, the pincher's search.">
+  <meta name="theme-color" content="#071214">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>The fleet walks itself.</h1>
+      <p class="tagline">
+        5,048 repos. 4,000+ classified. ~50 daily pushes.
+        A substrate walker for every kind of work.
+      </p>
+      <form id="search-form" class="search" action="/search.html" method="get">
+        <input id="search-input" name="q" type="search" autocomplete="off"
+               placeholder="Ask the pincher: receipt handling, quantum audio, witness chains…"
+               aria-label="Search the fleet">
+        <button type="submit">Ask</button>
+      </form>
+      <p class="hero-meta">
+        Dataset generated <span id="dataset-gen">…</span> ·
+        Last wave: <a href="/family/fleet.html">fleet-seeds wave 52</a>
+      </p>
+    </div>
+  </header>
+
+  <section class="wave">
+    <h2>The keeper's wave</h2>
+    <article class="wave-card">
+      <header>
+        <span class="wave-tag">wave 52</span>
+        <time>2026-09-28</time>
+      </header>
+      <h3>quilt-codespace-lab — VERDICT PASS at attempt 8</h3>
+      <p>
+        A Codespace whose <code>postCreateCommand</code> runs ONE experiment and pushes its own receipts
+        to a unique <code>codespace-run/&lt;ts&gt;</code> branch. 8 attempts. 0 ssh. The receipt IS the product.
+      </p>
+      <p class="receipt">
+        <strong>Root cause:</strong> npm normalizes extracted mtimes to 1985-10-26T08:15Z epoch.
+        Reader's own stderr named it: <code>mtime does not match seal.mtime_local (1790613055663.0051 vs 499162500000)</code>.
+        Fix registered (not slipped): qthe v0.2.0 with <code>--mtime-witness</code> flag.
+      </p>
+      <p class="wave-meta">
+        Verdict <strong>PASS</strong> · 8 codespaces created · 8 deleted · 0 left standing ·
+        <a href="https://github.com/SuperInstance/quilt-codespace-lab">view repo</a>
+      </p>
+    </article>
+
+    <article class="wave-card">
+      <header>
+        <span class="wave-tag">wave 52</span>
+        <time>2026-09-28</time>
+      </header>
+      <h3>quilt-atlas — first cloud run green</h3>
+      <p>
+        The living inventory of ≥4,000 repos regenerates every 6 hours via <code>atlas.yml</code> cron.
+        Families: <code>other=3326 · fleet=389 · quilt=203 · qthe=33 · moth=18 · jev=18 · latent=13</code>.
+      </p>
+      <p class="wave-meta">
+        Honest failure framing: CI absence on unmeasured repos is <code>UNMEASURED</code>, never zero.
+        <a href="https://github.com/SuperInstance/quilt-atlas">view repo</a>
+      </p>
+    </article>
+  </section>
+
+  <section class="families">
+    <h2>The family tree</h2>
+    <p class="families-subtitle">Click any family to dive in.</p>
+    <div class="family-grid" id="family-grid">
+      <!-- populated by JS from pincher dataset -->
+    </div>
+  </section>
+
+  <section class="recent">
+    <h2>Recently active</h2>
+    <p class="recent-subtitle">The 15 most-recently pushed repos in the pincher's index.</p>
+    <div id="recent-list" class="recent-list">
+      <!-- populated by JS -->
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>What this is</h2>
+    <p>
+      SuperInstance is a substrate walker pattern applied to a fleet of 5,000+ repos.
+      The fleet walks receipts; receipts are sealed to chains; chains are the canonical state.
+    </p>
+    <p>
+      <a href="https://github.com/SuperInstance">Browse the fleet on GitHub</a> ·
+      <a href="/v1/health">Pincher health</a> ·
+      <a href="https://fleet-seeds.casey-digennaro.workers.dev">The keeper's seedbox</a>
+    </p>
+  </section>
+
+  <footer class="site-footer">
+    <p>
+      Built by <a href="https://github.com/SuperInstance/mavis-pincher">mavis-pincher</a>.
+      Site generated <span id="site-gen">…</span>.
+      Doctrine: <em>the chain is the canonical state; the receipts are the knowledge;
+      the walk continues until the substrate tells it to stop.</em>
+    </p>
+  </footer>
+
+  <script src="/assets/app.js" type="module"></script>
+</body>
+</html>
