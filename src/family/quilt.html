@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>quilt · SuperInstance</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>family: <em style="color: var(--copper-bright)">quilt</em></h1>
+      <p class="tagline">The Quilt canvas — substrate walkers and games.</p>
+      <p class="hero-meta"><a href="/">← back to fleet</a></p>
+    </div>
+  </header>
+
+  <main class="search-results">
+    <h2>Repos in this family</h2>
+    <div id="results"></div>
+  </main>
+
+  <script>
+    const PINCHER = window.PINCHER_URL || 'https://superinstance.dev';
+    const FAMILY = 'quilt';
+    fetch(`${PINCHER}/v1/repos?family=${FAMILY}&limit=200`)
+      .then(r => r.json())
+      .then(d => {
+        const el = document.getElementById('results');
+        if (!d.records || d.records.length === 0) {
+          el.innerHTML = '<p>No repos in this family yet.</p>';
+          return;
+        }
+        el.innerHTML = d.records.map(r => `
+          <div class="result">
+            <h3><a href="${r.html_url}" target="_blank">${r.owner}/${r.name}</a></h3>
+            <p class="desc">${r.description || ''}</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">last pushed ${r.pushed_at.slice(0,10)} · ${r.size_kb} KB · ${r.stargazers} ★ · ${r.open_issues} issues</p>
+          </div>`).join('');
+      });
+  </script>
+</body>
+</html>
